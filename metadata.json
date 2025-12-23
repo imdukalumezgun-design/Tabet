@@ -1,0 +1,5 @@
+{
+  "name": "AgroGestion Pro",
+  "description": "Une application complète de gestion commerciale pour l'aviculture : stock, clients, facturation et suivi des crédits avec sauvegarde locale.",
+  "requestFramePermissions": []
+}

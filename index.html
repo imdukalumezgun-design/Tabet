@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgroGestion Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ajout de la librairie pour le téléchargement PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f3f4f6;
+      }
+      
+      /* IMPRESSION ULTRA ROBUSTE (Méthode de Visibilité) */
+      @media print {
+        @page {
+          margin: 10mm;
+          size: auto;
+        }
+
+        /* 1. Masquer TOUT le contenu de la page par défaut */
+        body * {
+          visibility: hidden;
+        }
+
+        /* 2. Rendre visible UNIQUEMENT la facture et son contenu */
+        #invoice-content, #invoice-content * {
+          visibility: visible;
+        }
+
+        /* 3. Positionner la facture tout en haut de la page, par-dessus tout le reste */
+        #invoice-content {
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background-color: white !important;
+          color: black !important; /* Force le noir pur */
+          border: none !important;
+          box-shadow: none !important;
+        }
+
+        /* Masquer explicitement les éléments d'interface (boutons, menus) */
+        .no-print {
+          display: none !important;
+        }
+
+        /* Assurer que les couleurs de fond (badges, etc.) s'impriment */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
